@@ -1,6 +1,3 @@
-package ru.netology
-
-import kotlin.math.min
 
 const val ERROR_CARD = -1
 const val ERROR_LIMIT = -2
@@ -12,7 +9,7 @@ fun main() {
 fun commission(typeCard: String, previous: Int, transfer: Int): Int = when(typeCard) {
     "MasterCard", "Maestro" -> when {
         transfer > 150_000 || transfer + previous > 600_000 -> ERROR_LIMIT
-        transfer < 75000 -> 0
+        transfer in 300..75_000 -> 0
         else -> 20 + (transfer * 0.006).toInt()
     }
     "VK Pay" -> when {
